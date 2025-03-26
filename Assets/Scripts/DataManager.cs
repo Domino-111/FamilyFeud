@@ -5,16 +5,6 @@ public class DataManager : MonoBehaviour
 {
     public List<Question> questions;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     [ContextMenu("Save Game")]
     public void SaveGame()
     {
