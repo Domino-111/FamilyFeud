@@ -6,6 +6,7 @@ public class PaletteMaster : MonoBehaviour
 {
     public GameObject[] border;
     public GameObject[] box;
+    public GameObject[] text;
     public Image dots;
 
     public ColourPalette currentPalette;
@@ -33,6 +34,11 @@ public class PaletteMaster : MonoBehaviour
             {
                 i.GetComponent<Image>().color = currentPalette.boxColour;
             }
+
+            foreach (GameObject i in text)
+            {
+                i.GetComponentInChildren<TMP_Text>().color = currentPalette.textColour;
+            }
         }
     }
 
@@ -42,5 +48,6 @@ public class PaletteMaster : MonoBehaviour
 
         border = GameObject.FindGameObjectsWithTag("Border");
         box = GameObject.FindGameObjectsWithTag("Box");
+        text = GameObject.FindGameObjectsWithTag("Text");
     }
 }
