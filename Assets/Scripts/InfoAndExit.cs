@@ -1,17 +1,9 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
-using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
 
-public class Questionnaire : MonoBehaviour
+public class InfoAndExit : MonoBehaviour
 {
     public GameObject gamePanel;
     public GameObject infoPanel;
-
-    public TextAsset textFile;
-
-    private DataManager dataManager;
 
     private void Awake()
     {
@@ -29,11 +21,6 @@ public class Questionnaire : MonoBehaviour
     {
         infoPanel.SetActive(false);
         gamePanel.SetActive(true);
-    }
-
-    public void DisplayQuestion()
-    {
-        //dataManager.questions = textFile.text.Split('\n');
     }
 
     public void Exit()
