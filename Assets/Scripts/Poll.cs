@@ -14,15 +14,18 @@ public class Poll : MonoBehaviour
 
     public List<string> SwearFilter;
 
-    public GameObject invalidAnswer;
+    public GameObject invalidAnswer, submittedAnswer;
 
+    // Establish 1st question and ensure hidden screens start hidden
     private void Awake()
     {
         displayQuestion.text = data.myQuestions[0].question;
 
         invalidAnswer.SetActive(false);
+        submittedAnswer.SetActive(false);
     }
 
+    // Once 'ENTER' is hit submit the response as well as checking it isn't on the swear filter
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
@@ -31,6 +34,9 @@ public class Poll : MonoBehaviour
             {
                 data.myQuestions[n].responses.Add(response.text);
                 data.SavedGame();
+
+                submittedAnswer.SetActive(true);
+                Invoke("SubmittedAnswer", 2f);
             }
 
             else
@@ -41,6 +47,7 @@ public class Poll : MonoBehaviour
         }
     }
 
+    // Traverse questions down the list and clear answer area
     public void NextQuestion()
     {
         n++;
@@ -54,6 +61,7 @@ public class Poll : MonoBehaviour
         response.text = "";
     }
 
+    // Traverse questions up the list and clear answer area
     public void PreviousQuestion()
     {
         n--;
@@ -70,5 +78,10 @@ public class Poll : MonoBehaviour
     public void InvalidAnswer()
     {
         invalidAnswer.SetActive(false);
+    }
+
+    public void SubmittedAnswer()
+    {
+        submittedAnswer.SetActive(false);
     }
 }
